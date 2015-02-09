@@ -7,6 +7,18 @@ var queenAttack = function(queen, piece) {
 };
 
 $(function() {
+  $("form#queen-attack").submit(function(event) {
+    var queen_start = [parseInt($("input#queen-x").val()), parseInt($("input#queen-y").val())];
+    var piece_start = [parseInt($("input#piece-x").val()), parseInt($("input#piece-y").val())];
+    var result = queenAttack(queen_start, piece_start);
 
-  event.preventDefault()
-})
+    if (result) {
+      $(".not").text("");
+    } else {
+      $(".not").text("not");
+    }
+
+    $("result").show();
+    event.preventDefault();
+  });
+});
